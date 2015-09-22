@@ -1,3 +1,7 @@
-ema_gro_blog_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: EmaGroBlogBundle:Default:index }
+index:
+    path:     /index
+    defaults: { _controller: EmaGroBlogBundle:Blog:index }
+
+detail:
+    path:     /post/{iddupost}
+    defaults: { _controller: EmaGroBlogBundle:Blog:detail }
