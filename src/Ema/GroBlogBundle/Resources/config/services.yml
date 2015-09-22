@@ -1,0 +1,4 @@
+services:
+#    ema_gro_blog.example:
+#        class: Ema\GroBlogBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
