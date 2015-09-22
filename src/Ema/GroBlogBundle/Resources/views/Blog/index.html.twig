@@ -1,7 +1,16 @@
-{% extends "::base.html.twig" %}
+{% extends 'EmaGroBlogBundle::layout.html.twig' %}
 
 {% block title %}EmaGroBlogBundle:Blog:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the mr GAlli</h1>
+    <section>
+    {% for post in posts %}
+        <article style="border:1px solid #333333;">
+            <h1>Titre: {{ post.getTitre() }}</h1>
+            <span>id: {{ post.getId() }}</span><br><br>
+            <span>urlAlias: {{ post.getUrlAlias() }}</span><br><br>
+            Content:<br><textarea readonly rows="10" cols="100">{{ post.getContent }}</textarea>
+        </article>
+    {% endfor %}
+    </section>
 {% endblock %}

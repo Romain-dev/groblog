@@ -1,7 +1,13 @@
 index:
-    path:     /index
+    path:     /
     defaults: { _controller: EmaGroBlogBundle:Blog:index }
+
+create:
+    path:     /create
+    defaults: { _controller: EmaGroBlogBundle:Blog:create }
 
 detail:
     path:     /post/{iddupost}
     defaults: { _controller: EmaGroBlogBundle:Blog:detail }
+    requirements:
+            iddupost:  \d+
