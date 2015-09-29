@@ -23,21 +23,18 @@ class Post
 
     /**
      * @var string
-     *
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="urlAlias", type="string", length=255)
      */
     private $urlAlias;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;

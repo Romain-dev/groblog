@@ -3,5 +3,12 @@
 {% block title %}EmaGroBlogBundle:Blog:detail{% endblock %}
 
 {% block body %}
-<h1>Post {{ id }}</h1>
+    <article class="post-preview">
+        <h2 class="post-title">
+            {{ post.getTitre() }}
+        </h2>
+        <br>
+        {{ post.getContent|raw }}
+        <p class="post-meta"> <span>id: {{ post.getId() }}</span><br> <span>  urlAlias: {{ post.getUrlAlias() }}</span><br><br></p>
+    </article>
 {% endblock %}

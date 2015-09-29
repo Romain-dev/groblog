@@ -6,8 +6,20 @@ create:
     path:     /create
     defaults: { _controller: EmaGroBlogBundle:Blog:create }
 
-detail:
+new:
+    path:     /new
+    defaults: { _controller: EmaGroBlogBundle:Blog:new }
+
+edit:
+    path:     /edit
+    defaults: { _controller: EmaGroBlogBundle:Blog:edit }
+
+delete:
+    path:     /delete
+    defaults: { _controller: EmaGroBlogBundle:Blog:delete }
+
+post:
     path:     /post/{iddupost}
-    defaults: { _controller: EmaGroBlogBundle:Blog:detail }
+    defaults: { _controller: EmaGroBlogBundle:Blog:post }
     requirements:
             iddupost:  \d+

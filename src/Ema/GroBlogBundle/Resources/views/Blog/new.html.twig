@@ -1,0 +1,32 @@
+{% extends 'EmaGroBlogBundle::layout.html.twig' %}
+
+{% block title %}EmaGroBlogBundle:Blog:detail{% endblock %}
+
+{% block body %}
+    {% if status == "success" %}
+        <div class="alert alert-success">
+          <strong>Félicitation</strong> Votre topic à bien été crée.
+        </div>
+
+    {% else %}
+        {{ form_start(form) }}
+            <fieldset>
+                <legend><h1>Ajouter un nouvel article</h1></legend>
+                <ul>
+                    <li style="padding-bottom: 30px;">
+                        {{ form_row(form.titre) }}
+                    </li>
+                    <li style="padding-bottom: 30px;">
+                        {{ form_row(form.urlAlias) }}
+                    </li>
+                    <li>
+                        {{ form_row(form.content) }}
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <button class="btn-default" type=submit>Créér</button>
+            </fieldset>
+        {{ form_start(form) }}
+    {% endif %}
+{% endblock %}
