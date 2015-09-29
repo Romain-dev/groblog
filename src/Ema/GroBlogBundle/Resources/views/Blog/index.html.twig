@@ -5,12 +5,18 @@
 {% block body %}
     <section>
     {% for post in posts %}
-        <article style="border:1px solid #333333;">
-            <h1>Titre: {{ post.getTitre() }}</h1>
-            <span>id: {{ post.getId() }}</span><br><br>
-            <span>urlAlias: {{ post.getUrlAlias() }}</span><br><br>
-            Content:<br><textarea readonly rows="10" cols="100">{{ post.getContent }}</textarea>
+        <article class="post-preview">
+            <a href="post.html">
+                <h2 class="post-title">
+                    {{ post.getTitre() }}
+                </h2>
+                <h3 class="post-subtitle">
+                    {{ post.getContent }}
+                </h3>
+            </a>
+            <p class="post-meta"> <span>id: {{ post.getId() }}</span> <span>  urlAlias: {{ post.getUrlAlias() }}</span><br><br></p>
         </article>
+        <hr>
     {% endfor %}
     </section>
 {% endblock %}
