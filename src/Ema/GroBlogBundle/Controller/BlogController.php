@@ -35,11 +35,23 @@ class BlogController extends Controller
         ));
     }
 
-    public function deleteAction()
+    public function deleteAction($iddupost)
     {
+        $this->deletePostById($iddupost);
+        $status = "deleted";
+        $posts = $this->getAllPosts();
+        return $this->render('EmaGroBlogBundle:Blog:admin.html.twig',array('status' => $status, 'posts' => $posts));
+
     }
 
-    public function editAction()
+    public function adminAction()
+    {
+        $status = "";
+        $posts = $this->getAllPosts();
+        return $this->render('EmaGroBlogBundle:Blog:admin.html.twig',array('status' => $status, 'posts' => $posts));
+    }
+
+    public function editAction($iddupost)
     {
     }
 
@@ -64,12 +76,28 @@ class BlogController extends Controller
         return $posts;
     }
 
+    private function getAllPosts()
+    {
+        $repository = $this->getDoctrine()->getRepository('EmaGroBlogBundle:Post');
+        $posts = $repository->findAll();
+        return $posts;
+    }
+
     private function getPostById($id)
     {
         $repository = $this->getDoctrine()->getRepository('EmaGroBlogBundle:Post');
         $post = $repository->find($id);
         return $post;
     }
+
+    private function deletePostById($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($this->getPostById($id));
+        $em->flush();
+    }
+
+
 
 
 

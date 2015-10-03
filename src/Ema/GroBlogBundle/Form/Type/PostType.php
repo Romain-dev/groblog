@@ -16,9 +16,9 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', 'text')
-            ->add('urlAlias', 'text')
-            ->add('content', 'textarea')
+            ->add('titre', 'text', array('attr' => array('style' => 'display:block;', 'class' => 'input-lg')))
+            ->add('urlAlias', 'text', array('attr' => array('style' => 'display:block;', 'class' => 'input-lg')))
+            ->add('content', 'textarea', array('attr' => array('style' => 'display:block;', 'class' => 'input-lg')))
             ->add('create', 'submit', array('label' => 'Créer'));
     }
 

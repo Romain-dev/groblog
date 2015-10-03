@@ -7,15 +7,19 @@ create:
     defaults: { _controller: EmaGroBlogBundle:Blog:create }
 
 new:
-    path:     /new
+    path:     /new/
     defaults: { _controller: EmaGroBlogBundle:Blog:new }
 
 edit:
-    path:     /edit
+    path:     /edit/{iddupost}
     defaults: { _controller: EmaGroBlogBundle:Blog:edit }
 
+admin:
+    path:     /admin
+    defaults: { _controller: EmaGroBlogBundle:Blog:admin }
+
 delete:
-    path:     /delete
+    path:     /delete/{iddupost}
     defaults: { _controller: EmaGroBlogBundle:Blog:delete }
 
 post:

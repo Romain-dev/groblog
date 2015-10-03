@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>GroBlog</title>
+        <title>Geronimo</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="{{ asset('bundles/emagroblog/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -28,6 +28,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('bundles/emagroblog/img/tardis.png') }}" />
 
     </head>
 
@@ -57,7 +59,7 @@
                             <a href="{{ path('new') }}">Nouveau post</a>
                         </li>
                         <li>
-                            <a href="admin">Administration</a>
+                            <a href="{{ path('admin') }}">Administration</a>
                         </li>
                     </ul>
                 </div>
@@ -73,9 +75,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                         <div class="site-heading">
-                            <h1>GroBlog</h1>
+                            <h1>Geronimo</h1>
                             <hr class="small">
-                            <span class="subheading">A clean blog by EMA</span>
+                            <span class="subheading">A blog about doctor who</span>
                         </div>
                     </div>
                 </div>
@@ -87,12 +89,6 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     {% block body %}{% endblock %}
-                    <!-- Pager -->
-                    <ul class="pager">
-                        <li class="next">
-                            <a href="#">Ancien Posts &rarr;</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
