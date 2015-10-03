@@ -7,8 +7,12 @@
         <div class="alert alert-success">
           <strong>Félicitation</strong> Votre topic à bien été crée.
         </div>
-
     {% else %}
+        {% if status != "" %}
+            <div class="alert alert-danger">
+                {{  status }}
+            </div>
+        {% endif %}
         {{ form_start(form) }}
             <fieldset>
                 <legend><h1>Ajouter un nouvel article</h1></legend>
@@ -24,9 +28,6 @@
                     </li>
                 </ul>
             </fieldset>
-            <fieldset style="padding-top: 20px;">
-                <button class="btn-default" type=submit>Créér</button>
-            </fieldset>
-        {{ form_start(form) }}
+        {{ form_end(form) }}
     {% endif %}
 {% endblock %}

@@ -26,8 +26,17 @@ class BlogController extends Controller
         if( $request->getMethod() == 'POST' )
         {
             $form->handleRequest($request);
-            $this->savePost($form->getData());
-            $status = "success";
+
+            //Check if form is valid
+            if($form->isValid())
+            {
+                $status = "success";
+                $this->savePost($form->getData());
+            }
+            else
+            {
+                $status = ($form->getErrors() == "") ? "Formulaire non valide" : $form->getErrors();
+            }
         }
 
         return $this->render('EmaGroBlogBundle:Blog:new.html.twig', array(
@@ -51,8 +60,33 @@ class BlogController extends Controller
         return $this->render('EmaGroBlogBundle:Blog:admin.html.twig',array('status' => $status, 'posts' => $posts));
     }
 
-    public function editAction($iddupost)
+    public function editAction($iddupost,Request $request)
     {
+        $status = "";
+
+        $post = $this->getPostById($iddupost);
+
+        $form = $this->createForm(new PostType(), $post);
+
+        if( $request->getMethod() == 'POST' )
+        {
+            $form->handleRequest($request);
+
+            //Check if form is valid
+            if($form->isValid())
+            {
+                $status = "success";
+                $this->savePost($form->getData());
+            }
+            else
+            {
+                $status = ($form->getErrors() == "") ? "Formulaire non valide" : $form->getErrors();
+            }
+        }
+
+        return $this->render('EmaGroBlogBundle:Blog:edit.html.twig', array(
+            'form' => $form->createView(), 'status' => $status
+        ));
     }
 
 

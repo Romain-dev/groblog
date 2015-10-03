@@ -2,6 +2,7 @@
 
 namespace Ema\GroBlogBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,18 +24,21 @@ class Post
 
     /**
      * @var string
+     * @Assert\NotBlank()
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
 
     /**
      * @var string
+     * @Assert\NotBlank()
      * @ORM\Column(name="urlAlias", type="string", length=255)
      */
     private $urlAlias;
 
     /**
      * @var string
+     * @Assert\NotBlank()
      * @ORM\Column(name="content", type="text")
      */
     private $content;
