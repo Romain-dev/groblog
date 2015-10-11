@@ -1,26 +1,26 @@
-index:
-    path:     /
-    defaults: { _controller: EmaGroBlogBundle:Blog:index }
-
 create:
     path:     /create
-    defaults: { _controller: EmaGroBlogBundle:Blog:create }
+    defaults: { _controller: EmaGroBlogBundle:Crud:create }
 
 new:
     path:     /new/
-    defaults: { _controller: EmaGroBlogBundle:Blog:new }
+    defaults: { _controller: EmaGroBlogBundle:Crud:new }
 
 edit:
     path:     /edit/{iddupost}
-    defaults: { _controller: EmaGroBlogBundle:Blog:edit }
+    defaults: { _controller: EmaGroBlogBundle:Crud:edit }
 
 admin:
     path:     /admin
-    defaults: { _controller: EmaGroBlogBundle:Blog:admin }
+    defaults: { _controller: EmaGroBlogBundle:Crud:admin }
 
 delete:
     path:     /delete/{iddupost}
-    defaults: { _controller: EmaGroBlogBundle:Blog:delete }
+    defaults: { _controller: EmaGroBlogBundle:Crud:delete }
+
+index:
+    path:     /
+    defaults: { _controller: EmaGroBlogBundle:Blog:index }
 
 post:
     path:     /post/{slug}
