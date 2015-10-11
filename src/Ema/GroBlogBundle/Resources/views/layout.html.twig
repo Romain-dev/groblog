@@ -61,6 +61,11 @@
                         <li>
                             <a href="{{ path('admin') }}">Administration</a>
                         </li>
+                        {% if connected is defined and connected %}
+                            <li>
+                                <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

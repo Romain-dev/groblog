@@ -9,10 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends Controller
 {
+
+
     public function indexAction()
     {
         $posts = $this->getLastTenPosts();
-        return $this->render('EmaGroBlogBundle:Blog:index.html.twig',array('posts' => $posts));
+        return $this->render('EmaGroBlogBundle:Blog:index.html.twig',array('connected' => $this->isConnected(), 'posts' => $posts));
     }
 
     public function newAction(Request $request)
@@ -40,7 +42,7 @@ class BlogController extends Controller
         }
 
         return $this->render('EmaGroBlogBundle:Blog:new.html.twig', array(
-            'form' => $form->createView(), 'status' => $status
+            'form' => $form->createView(), 'connected' => $this->isConnected(), 'status' => $status
         ));
     }
 
@@ -49,7 +51,7 @@ class BlogController extends Controller
         $this->deletePostById($iddupost);
         $status = "deleted";
         $posts = $this->getAllPosts();
-        return $this->render('EmaGroBlogBundle:Blog:admin.html.twig',array('status' => $status, 'posts' => $posts));
+        return $this->render('EmaGroBlogBundle:Blog:admin.html.twig',array('connected' => $this->isConnected(), 'status' => $status, 'posts' => $posts));
 
     }
 
@@ -57,7 +59,7 @@ class BlogController extends Controller
     {
         $status = "";
         $posts = $this->getAllPosts();
-        return $this->render('EmaGroBlogBundle:Blog:admin.html.twig',array('status' => $status, 'posts' => $posts));
+        return $this->render('EmaGroBlogBundle:Blog:admin.html.twig',array('connected' => $this->isConnected(), 'status' => $status, 'posts' => $posts));
     }
 
     public function editAction($iddupost,Request $request)
@@ -85,7 +87,7 @@ class BlogController extends Controller
         }
 
         return $this->render('EmaGroBlogBundle:Blog:edit.html.twig', array(
-            'form' => $form->createView(), 'status' => $status
+            'form' => $form->createView(), 'connected' => $this->isConnected(), 'status' => $status
         ));
     }
 
@@ -93,7 +95,7 @@ class BlogController extends Controller
 
     public function postAction($iddupost)
     {
-        return $this->render('EmaGroBlogBundle:Blog:detail.html.twig',array('post' => $this->getPostById($iddupost)));
+        return $this->render('EmaGroBlogBundle:Blog:detail.html.twig',array('connected' => $this->isConnected(), 'post' => $this->getPostById($iddupost)));
     }
 
     private function savePost($post)
@@ -131,6 +133,10 @@ class BlogController extends Controller
         $em->flush();
     }
 
+    private function isConnected()
+    {
+        return !is_null($this->getUser());
+    }
 
 
 
