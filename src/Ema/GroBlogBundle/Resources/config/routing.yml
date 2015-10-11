@@ -23,7 +23,7 @@ delete:
     defaults: { _controller: EmaGroBlogBundle:Blog:delete }
 
 post:
-    path:     /post/{iddupost}
+    path:     /post/{slug}
     defaults: { _controller: EmaGroBlogBundle:Blog:post }
     requirements:
             iddupost:  \d+

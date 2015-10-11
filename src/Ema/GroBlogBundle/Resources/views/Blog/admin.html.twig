@@ -13,14 +13,14 @@
         <tr>
             <th width="40px;">Id</th>
             <th>Titre</th>
-            <th>Alias</th>
+            <th>Slug</th>
             <th width="90px;">Editer</th>
             <th width="90px;">Supprimer</th>
         </tr>
          {% for post in posts %}
          <tr>
             <td style="padding-top:20px;">{{ post.getId() }}</td>
-            <td style="padding-top:20px;padding-right:10px;"><a href="{{ path('post', {iddupost:post.getId()}) }}">{{ post.getTitre() }}</a></td>
+            <td style="padding-top:20px;padding-right:10px;"><a href="{{ path('post', {slug:post.getUrlAlias()}) }}">{{ post.getTitre() }}</a></td>
             <td style="padding-top:20px;padding-right:10px;">{{ post.getUrlAlias() }}</td>
             <td style="padding-top:20px;padding-right:10px;padding-left:10px;"><a href="{{ path('edit', {iddupost:post.getId()}) }}"><img width="35px;" src="{{ asset('bundles/emagroblog/img/edit.png') }}"/></a></td>
             <td style="padding-left:10px;padding-top:20px;"><a href="{{ path('delete', {iddupost:post.getId()}) }}"><img width="30px;" src="{{ asset('bundles/emagroblog/img/delete.png') }}"/></a></td>

@@ -6,7 +6,7 @@
     <section>
     {% for post in posts %}
         <article class="post-preview">
-            <a href="{{ path('post', {iddupost:post.getId()}) }}">
+            <a href="{{ path('post', {slug:post.getUrlAlias()}) }}">
                 <h2 class="post-title">
                     {{ post.getTitre() }}
                 </h2>

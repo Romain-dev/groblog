@@ -33,7 +33,9 @@ class BlogController extends Controller
             if($form->isValid())
             {
                 $status = "success";
-                $this->savePost($form->getData());
+                $postToSave = $form->getData();
+                $postToSave->setUrlAlias($this->slugify($postToSave->getTitre()));
+                $this->savePost($postToSave);
             }
             else
             {
@@ -78,7 +80,9 @@ class BlogController extends Controller
             if($form->isValid())
             {
                 $status = "success";
-                $this->savePost($form->getData());
+                $postToSave = $form->getData();
+                $postToSave->setUrlAlias($this->slugify($postToSave->getTitre()));
+                $this->savePost($postToSave);
             }
             else
             {
@@ -93,9 +97,9 @@ class BlogController extends Controller
 
 
 
-    public function postAction($iddupost)
+    public function postAction($slug)
     {
-        return $this->render('EmaGroBlogBundle:Blog:detail.html.twig',array('connected' => $this->isConnected(), 'post' => $this->getPostById($iddupost)));
+        return $this->render('EmaGroBlogBundle:Blog:post.html.twig',array('connected' => $this->isConnected(), 'post' => $this->getFirstPostBySlugName($slug)));
     }
 
     private function savePost($post)
@@ -119,6 +123,12 @@ class BlogController extends Controller
         return $posts;
     }
 
+    private function getFirstPostBySlugName($slug)
+    {
+        $repository = $this->getDoctrine()->getRepository('EmaGroBlogBundle:Post');
+        return $repository->findBy(array('urlAlias' => $slug),array(),1)[0];
+    }
+
     private function getPostById($id)
     {
         $repository = $this->getDoctrine()->getRepository('EmaGroBlogBundle:Post');
@@ -138,7 +148,28 @@ class BlogController extends Controller
         return !is_null($this->getUser());
     }
 
+    public function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
 
+        // trim
+        $text = trim($text, '-');
 
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
 
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
+    }
 }

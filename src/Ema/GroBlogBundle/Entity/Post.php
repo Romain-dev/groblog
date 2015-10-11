@@ -31,7 +31,6 @@ class Post
 
     /**
      * @var string
-     * @Assert\NotBlank()
      * @ORM\Column(name="urlAlias", type="string", length=255)
      */
     private $urlAlias;
