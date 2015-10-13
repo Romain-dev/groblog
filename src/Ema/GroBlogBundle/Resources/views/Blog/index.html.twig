@@ -3,20 +3,26 @@
 {% block title %}EmaGroBlogBundle:Blog:index{% endblock %}
 
 {% block body %}
-    <section>
-    {% for post in posts %}
-        <article class="post-preview">
-            <a href="{{ path('post', {slug:post.getUrlAlias()}) }}">
-                <h2 class="post-title">
-                    {{ post.getTitre() }}
-                </h2>
-                <br>
+    <section id="liste-des-articles">
+        {% for post in posts %}
+            <article class="post-preview">
+                <header style="margin-bottom: 40px;">
+                    <a href="{{ path('post', {slug:post.getUrlAlias()}) }}">
+                        <h2 class="post-title">
+                            {{ post.getTitre() }}
+                        </h2>
+                    </a>
+                </header>
                 {{ post.getContent|raw }}
-            </a>
-            <p class="post-meta"> <span>id: {{ post.getId() }}</span><br> <span>  urlAlias: {{ post.getUrlAlias() }}</span><br><br></p>
-        </article>
-        <hr>
-    {% endfor %}
+                <footer>
+                    <p class="post-meta">
+                        <span><b>id:</b> {{ post.getId() }}</span>
+                        <span style="display: block"><b>urlAlias:</b> {{ post.getUrlAlias() }}</span>
+                    </p>
+                </footer>
+            </article>
+            <hr>
+        {% endfor %}
     </section>
 {% endblock %}
 

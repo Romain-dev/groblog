@@ -3,26 +3,29 @@
 {% block title %}EmaGroBlogBundle:Blog:detail{% endblock %}
 
 {% block body %}
-    {% if status == "success" %}
-         <div class="alert alert-success">
-             <strong>Félicitation</strong> Votre topic à bien été modifié.
-         </div>
-    {% elseif status != "" %}
-        <div class="alert alert-danger">
-            {{  status }}
-        </div>  
-    {% endif %}
-    {{ form_start(form) }}
-        <fieldset>
-            <legend><h1>Modifier un article</h1></legend>
-            <ul>
-                <li style="padding-bottom: 30px;">
-                    {{ form_row(form.titre) }}
-                </li>
-                <li>
-                    {{ form_row(form.content) }}
-                </li>
-            </ul>
-        </fieldset>
-    {{ form_end(form) }}
+    <section id="formulaire">
+        {% if status == "success" %}
+             <div class="alert alert-success">
+                 <strong>Félicitation</strong> Votre topic à bien été modifié.
+             </div>
+        {% elseif status != "" %}
+            <div class="alert alert-danger">
+                {{  status }}
+            </div>
+        {% endif %}
+
+        {{ form_start(form) }}
+            <fieldset>
+                <legend><h1>Modifier un article</h1></legend>
+                <ul>
+                    <li style="padding-bottom: 30px;">
+                        {{ form_row(form.titre) }}
+                    </li>
+                    <li>
+                        {{ form_row(form.content) }}
+                    </li>
+                </ul>
+            </fieldset>
+        {{ form_end(form) }}
+    </section>
 {% endblock %}

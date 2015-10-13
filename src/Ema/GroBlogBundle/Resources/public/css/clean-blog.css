@@ -259,7 +259,7 @@ hr.small {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-footer {
+footer .main{
   padding: 50px 0 65px;
 }
 footer .list-inline {

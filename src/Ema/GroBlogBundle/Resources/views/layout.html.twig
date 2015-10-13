@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +28,9 @@
         <![endif]-->
 
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('bundles/emagroblog/img/tardis.png') }}" />
-
     </head>
 
     <body>
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
             <div class="container-fluid">
@@ -90,18 +86,18 @@
         </header>
 
         <!-- Main Content -->
-        <div class="container">
+        <section class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     {% block body %}{% endblock %}
                 </div>
             </div>
-        </div>
+        </section>
 
         <hr>
 
         <!-- Footer -->
-        <footer>
+        <footer class="main">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -123,7 +119,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="https://github.com/Romain-dev/groblog">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -149,5 +145,4 @@
         {% block javascripts %}{% endblock %}
 
     </body>
-
 </html>

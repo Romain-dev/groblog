@@ -3,12 +3,22 @@
 {% block title %}EmaGroBlogBundle:Blog:detail{% endblock %}
 
 {% block body %}
-    <article class="post-preview">
-        <h2 class="post-title">
-            {{ post.getTitre() }}
-        </h2>
-        <br>
-        {{ post.getContent|raw }}
-        <p class="post-meta"> <span>id: {{ post.getId() }}</span><br> <span>  urlAlias: {{ post.getUrlAlias() }}</span><br><br></p>
-    </article>
+    <section id="detail-du-post">
+        <article class="post-preview">
+            <header style="margin-bottom: 40px;">
+                <a href="{{ path('post', {slug:post.getUrlAlias()}) }}">
+                    <h2 class="post-title">
+                        {{ post.getTitre() }}
+                    </h2>
+                </a>
+            </header>
+            {{ post.getContent|raw }}
+            <footer>
+                <p class="post-meta">
+                    <span><b>id:</b> {{ post.getId() }}</span>
+                    <span style="display: block"><b>urlAlias:</b> {{ post.getUrlAlias() }}</span>
+                </p>
+            </footer>
+        </article>
+    </section>
 {% endblock %}
