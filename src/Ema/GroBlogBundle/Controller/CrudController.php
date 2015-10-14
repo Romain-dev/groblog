@@ -22,22 +22,27 @@ class CrudController extends Controller
 
         $post = new Post();
 
+        //Creation du form avec le classform
         $form = $this->createForm(new PostType(), $post);
 
+        //Si le formulaire a ete envoye
         if( $request->getMethod() == 'POST' )
         {
             $form->handleRequest($request);
 
-            //Check if form is valid
+            //Le form est il valide
             if($form->isValid())
             {
                 $status = "success";
                 $postToSave = $form->getData();
+                //Creation de la slug
                 $postToSave->setUrlAlias($this->slugify($postToSave->getTitre()));
+                //Enregistrement
                 $this->savePost($postToSave);
             }
             else
             {
+                //Affichages des erreurs du validateur
                 $status = ($form->getErrors() == "") ? "Formulaire non valide" : $form->getErrors();
             }
         }
@@ -64,11 +69,14 @@ class CrudController extends Controller
             {
                 $status = "success";
                 $postToSave = $form->getData();
+                //Creation de la slug
                 $postToSave->setUrlAlias($this->slugify($postToSave->getTitre()));
+                //Sauvegarde
                 $this->savePost($postToSave);
             }
             else
             {
+                //Affichage des erreur du validateur
                 $status = ($form->getErrors() == "") ? "Formulaire non valide" : $form->getErrors();
             }
         }
@@ -82,10 +90,12 @@ class CrudController extends Controller
     {
         $this->deletePostById($iddupost);
         $status = "deleted";
+        //Recuperation des posts pour la vue admin
         $posts = $this->getAllPosts();
         return $this->render('EmaGroBlogBundle:Crud:admin.html.twig',array('connected' => $this->isConnected(), 'status' => $status, 'posts' => $posts));
     }
 
+    //Enregistre le post dans la BDD
     private function savePost($post)
     {
         $em = $this->getDoctrine()->getManager();
@@ -93,6 +103,7 @@ class CrudController extends Controller
         $em->flush();
     }
 
+    //Permet de recuperer tous les posts
     private function getAllPosts()
     {
         $repository = $this->getDoctrine()->getRepository('EmaGroBlogBundle:Post');
@@ -100,6 +111,7 @@ class CrudController extends Controller
         return $posts;
     }
 
+    //Selection d'un post par id
     private function getPostById($id)
     {
         $repository = $this->getDoctrine()->getRepository('EmaGroBlogBundle:Post');
@@ -107,6 +119,7 @@ class CrudController extends Controller
         return $post;
     }
 
+    //Suppression d'un post par son id
     private function deletePostById($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -114,11 +127,13 @@ class CrudController extends Controller
         $em->flush();
     }
 
+    //Verifie si un utilisateur est connecte avec FOS
     private function isConnected()
     {
         return !is_null($this->getUser());
     }
 
+    //Transforme une string en string "slug compliant"
     public function slugify($text)
     {
         // replace non letter or digits by -
