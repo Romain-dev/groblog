@@ -4,6 +4,7 @@
 
 {% block body %}
     <section id="administration">
+        <h2 style="margin-bottom: 40px;">Administration</h2>
         {% if status == "deleted" %}
             <div class="alert alert-success">
                 Votre topic à bien été supprimé.
@@ -12,19 +13,19 @@
 
         <table>
             <tr>
-                <th width="40px;">Id</th>
+                <th style="width:40px;">Id</th>
                 <th>Titre</th>
                 <th>Slug</th>
-                <th width="90px;">Editer</th>
-                <th width="90px;">Supprimer</th>
+                <th style="width:90px;">Editer</th>
+                <th style="width:90px;">Supprimer</th>
             </tr>
              {% for post in posts %}
              <tr>
                 <td style="padding-top:20px;">{{ post.getId() }}</td>
                 <td style="padding-top:20px;padding-right:10px;"><a href="{{ path('post', {slug:post.getUrlAlias()}) }}">{{ post.getTitre() }}</a></td>
                 <td style="padding-top:20px;padding-right:10px;">{{ post.getUrlAlias() }}</td>
-                <td style="padding-top:20px;padding-right:10px;padding-left:10px;"><a href="{{ path('edit', {iddupost:post.getId()}) }}"><img width="35px;" src="{{ asset('bundles/emagroblog/img/edit.png') }}"/></a></td>
-                <td style="padding-left:10px;padding-top:20px;"><a href="{{ path('delete', {iddupost:post.getId()}) }}"><img width="30px;" src="{{ asset('bundles/emagroblog/img/delete.png') }}"/></a></td>
+                <td style="padding-top:20px;padding-right:10px;padding-left:10px;"><a href="{{ path('edit', {iddupost:post.getId()}) }}"><img width="35" alt="modifier" src="{{ asset('bundles/emagroblog/img/edit.png') }}"/></a></td>
+                <td style="padding-left:10px;padding-top:20px;"><a href="{{ path('delete', {iddupost:post.getId()}) }}"><img width="30" alt="supprimer" src="{{ asset('bundles/emagroblog/img/delete.png') }}"/></a></td>
              </tr>
             {% endfor %}
         </table>

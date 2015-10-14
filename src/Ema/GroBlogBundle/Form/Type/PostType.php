@@ -18,7 +18,8 @@ class PostType extends AbstractType
         $builder
             ->add('titre', 'text', array('attr' => array('style' => 'display:block;', 'class' => 'input-lg')))
             ->add('content', 'textarea', array('attr' => array('style' => 'display:block;', 'class' => 'input-lg')))
-            ->add('Valider', 'submit', array('attr' => array('style' => 'margin-top:15px;margin-left:40px;', 'class' => 'btn-default')));
+            ->add('Valider', 'submit', array('attr' => array('style' => 'margin-top:15px;margin-left:40px;', 'class' => 'btn-default')))
+            ->setAction('#');
     }
 
     public function getName()
